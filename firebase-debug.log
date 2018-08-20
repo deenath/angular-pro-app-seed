@@ -1,0 +1,124 @@
+[debug] [2018-08-20T08:40:11.243Z] ----------------------------------------------------------------------
+[debug] [2018-08-20T08:40:11.245Z] Command:       /usr/local/Cellar/node/10.9.0/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-08-20T08:40:11.245Z] CLI Version:   4.1.2
+[debug] [2018-08-20T08:40:11.245Z] Platform:      darwin
+[debug] [2018-08-20T08:40:11.245Z] Node Version:  v10.9.0
+[debug] [2018-08-20T08:40:11.257Z] Time:          Mon Aug 20 2018 16:40:11 GMT+0800 (Malaysia Time)
+[debug] [2018-08-20T08:40:11.257Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-20T08:40:11.270Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-20T08:40:11.271Z] > authorizing via signed-in user
+[debug] [2018-08-20T08:40:11.273Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-20T08:40:11.273Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-08-20T08:40:11.572Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-20T08:40:11.593Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/fitness-app-41fb5  
+ 
+[debug] [2018-08-20T08:40:12.817Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'fitness-app-41fb5'...
+[info] 
+[info] i  deploying database, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-08-20T08:40:12.822Z] >>> HTTP REQUEST PUT https://fitness-app-41fb5.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "schedule": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": [
+          "timestamp"
+        ]
+      }
+    },
+    "meals": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "workouts": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
+
+[debug] [2018-08-20T08:40:13.913Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database fitness-app-41fb5 is valid
+[debug] [2018-08-20T08:40:13.914Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/fitness-app-41fb5/versions  
+
+[debug] [2018-08-20T08:40:15.761Z] <<< HTTP RESPONSE 200
+[info] i  hosting: found 116 files in public directory
+[debug] [2018-08-20T08:40:16.448Z] [hosting] hash cache [0] stored for 116 files
+[debug] [2018-08-20T08:40:16.448Z] [hosting][hash queue][FINAL]
+[debug] [2018-08-20T08:40:16.448Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/fitness-app-41fb5/versions/d829700502d8224c:populateFiles  
+ <request body omitted>
+[debug] [2018-08-20T08:40:18.615Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-20T08:40:18.644Z] [hosting][populate queue][FINAL]
+[debug] [2018-08-20T08:40:18.644Z] [hosting] uploads queued: 72
+[debug] [2018-08-20T08:40:24.974Z] [hosting][upload queue][FINAL]
+[info] ✔  hosting: file upload complete
+[debug] [2018-08-20T08:40:24.975Z] [hosting] deploy completed after 9214ms
+[info] i  database: releasing rules...
+[debug] [2018-08-20T08:40:25.069Z] >>> HTTP REQUEST PUT https://fitness-app-41fb5.firebaseio.com/.settings/rules.json  
+ {
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "schedule": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": [
+          "timestamp"
+        ]
+      }
+    },
+    "meals": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "workouts": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
+
+[debug] [2018-08-20T08:40:26.061Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules for database fitness-app-41fb5 released successfully
+[info] i  hosting: finalizing version...
+[debug] [2018-08-20T08:40:26.062Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/fitness-app-41fb5/versions/d829700502d8224c?updateMask=status  
+
+[debug] [2018-08-20T08:40:27.591Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-20T08:40:27.591Z] [hosting] finalized version:
+[info] ✔  hosting: version finalized
+[info] i  hosting: releasing new version...
+[debug] [2018-08-20T08:40:27.591Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/fitness-app-41fb5/releases?version_name=sites/fitness-app-41fb5/versions/d829700502d8224c  
+
+[debug] [2018-08-20T08:40:29.585Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-20T08:40:29.585Z] [hosting] release:
+[info] ✔  hosting: release complete
+[info] 
+[info] ✔  Deploy complete!
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/fitness-app-41fb5/overview
+[info] Hosting URL: https://fitness-app-41fb5.firebaseapp.com
